@@ -26,13 +26,6 @@ jobs:
           for file in `find ~ -name "*.apk" -print`; do
             mv "$file" ${{ github.workspace }}/apk/
           done
-          
-      - name: Upload App To Artifact
-        uses: actions/upload-artifact@v4.6.0
-        with:
-          name: com.github.tvbox.osc
-          path: ${{ github.workspace }}/apk/*
-          
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2.2.1
         if: startsWith(takagen99-Box-${{ env.BUILD_TIME }}, 'refs/tags/')
@@ -47,3 +40,8 @@ jobs:
           files: |
             ${{ github.workspace }}/apk/*
             
+      - name: Upload App To Artifact
+        uses: actions/upload-artifact@v4.6.0
+        with:
+          name: com.github.tvbox.osc
+          path: ${{ github.workspace }}/apk/*     
