@@ -17,6 +17,7 @@ jobs:
       - name: Build With Gradle
         run: |
           echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M")" >> $GITHUB_ENV
+          sudo apt install python3 -y
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
           
